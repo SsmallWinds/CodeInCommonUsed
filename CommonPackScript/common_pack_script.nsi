@@ -179,15 +179,16 @@ Function InstallDotNetOnline
   Delete "$TEMP\${Dotnet_file}"
 FUnctionEnd
 
-;判断是否安装.net 4.5 或4.5以上
+;判断是否安装.net 4.5.2 或4.5.2以上
 Function IsDotNETInstalled
   Push $0
   Push $1
 
-  ReadRegStr $1 HKEY_LOCAL_MACHINE "Software\Microsoft\NET Framework Setup\NDP\v4\Client" "Version"
+  ReadRegStr $1 HKEY_LOCAL_MACHINE "Software\Microsoft\NET Framework Setup\NDP\v4\Client" "Release"
   ;MessageBox MB_OK "$1" #For Test
 
-  ${If} $1 < '4.5.2'
+  ;注册表中.net 4.5.2的版本号
+  ${If} $1 < '379893'
     StrCpy $0 0
   ${Else}
     StrCpy $0 1 #已经安装.net

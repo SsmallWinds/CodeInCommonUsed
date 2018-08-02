@@ -1,0 +1,1 @@
+swigwin-3.0.10\swig -c++ -java -package com.es.test -outdir out/com/es/test -I./EsWrap_vs\EsTrade test.i
